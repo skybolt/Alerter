@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D493DA631BB3533100F9459E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DA621BB3533100F9459E /* NotificationController.swift */; };
 		D4F58B491B54883F0017EDC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F58B481B54883F0017EDC7 /* AppDelegate.swift */; };
 		D4F58B4B1B54883F0017EDC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F58B4A1B54883F0017EDC7 /* ViewController.swift */; };
 		D4F58B4E1B54883F0017EDC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F58B4C1B54883F0017EDC7 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D493DA621BB3533100F9459E /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		D4F58B451B54883F0017EDC7 /* Alerter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alerter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F58B481B54883F0017EDC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4F58B4A1B54883F0017EDC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		D4F58B611B54883F0017EDC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F58B661B54883F0017EDC7 /* Alerter WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Alerter WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F58B6C1B54883F0017EDC7 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		D4F58B6D1B54883F0017EDC7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		D4F58B6D1B54883F0017EDC7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterfaceController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		D4F58B6F1B54883F0017EDC7 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		D4F58B711B54883F0017EDC7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		D4F58B731B54883F0017EDC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				D4F58B4F1B54883F0017EDC7 /* Assets.xcassets */,
 				D4F58B511B54883F0017EDC7 /* LaunchScreen.storyboard */,
 				D4F58B541B54883F0017EDC7 /* Info.plist */,
+				D493DA621BB3533100F9459E /* NotificationController.swift */,
 			);
 			path = Alerter;
 			sourceTree = "<group>";
@@ -149,8 +152,8 @@
 		D4F58B6A1B54883F0017EDC7 /* Alerter WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D4F58B6D1B54883F0017EDC7 /* InterfaceController.swift */,
 				D4F58B6F1B54883F0017EDC7 /* ExtensionDelegate.swift */,
+				D4F58B6D1B54883F0017EDC7 /* InterfaceController.swift */,
 				D4F58B711B54883F0017EDC7 /* NotificationController.swift */,
 				D4F58B731B54883F0017EDC7 /* Assets.xcassets */,
 				D4F58B751B54883F0017EDC7 /* Info.plist */,
@@ -229,6 +232,7 @@
 		D4F58B3D1B54883F0017EDC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "the Klebeian Group";
 				TargetAttributes = {
@@ -298,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D493DA631BB3533100F9459E /* NotificationController.swift in Sources */,
 				D4F58B4B1B54883F0017EDC7 /* ViewController.swift in Sources */,
 				D4F58B491B54883F0017EDC7 /* AppDelegate.swift in Sources */,
 			);
@@ -505,8 +510,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Alerter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.klebeian.Alerter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
@@ -516,8 +523,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Alerter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.klebeian.Alerter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
 		};
@@ -540,6 +549,7 @@
 				D4F58B7A1B54883F0017EDC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4F58B7C1B54883F0017EDC7 /* Build configuration list for PBXNativeTarget "Alerter WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +558,7 @@
 				D4F58B7E1B54883F0017EDC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4F58B801B54883F0017EDC7 /* Build configuration list for PBXNativeTarget "Alerter" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +567,7 @@
 				D4F58B821B54883F0017EDC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

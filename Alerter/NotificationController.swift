@@ -1,37 +1,35 @@
 //
 //  NotificationController.swift
-//  Alerter WatchKit Extension
+//  Alerter
 //
-//  Created by rob on 7/13/15.
+//  Created by rob on 9/23/15.
 //  Copyright © 2015 the Klebeian Group. All rights reserved.
 //
 
-import WatchKit
 import Foundation
-
+import WatchKit
 
 class NotificationController: WKUserNotificationInterfaceController {
-
+    
     override init() {
         // Initialize variables here.
         super.init()
         
         // Configure interface objects here.
     }
-
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
-
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
     
     override func didReceiveLocalNotification(localNotification: UILocalNotification, withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
-        print("didReceiveLocalNotification")
         // This method is called when a local notification needs to be presented.
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
@@ -43,7 +41,6 @@ class NotificationController: WKUserNotificationInterfaceController {
     
     
     override func didReceiveRemoteNotification(remoteNotification: [NSObject : AnyObject], withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
-        print("Watch didReceiveRemoteNotification()")
         // This method is called when a remote notification needs to be presented.
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.

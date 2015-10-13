@@ -7,11 +7,35 @@
 //
 
 import WatchKit
+import WatchConnectivity
+import UIKit
+import Foundation
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
-
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
+    
+    
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        //print("Watchkit ExtensionDelegate didLaunch")
+        
+        if WCSession.isSupported() {  //start isSupported
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            
+            //let connectionState = session.reachable
+            //print ("WatchKit ExDel \(session.reachable)")
+            
+            /*let connectionNotification = UILocalNotification.init()
+            connectionNotification.alertBody = "Loaded"
+            
+            UIApplication.sharedApplication().presentLocalNotificationNow(connectionNotification) */
+            //UIApplication not yet supported in Watchos, so no generation of local alerts from watch
+            
+            
+            
+            
+        }  //end if WCSession.isSupported
     }
 
     func applicationDidBecomeActive() {

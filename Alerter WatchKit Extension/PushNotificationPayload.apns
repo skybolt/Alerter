@@ -1,15 +1,15 @@
 {
     "aps": {
         "alert": {
-            "body": "Test message",
-            "title": "Optional title"
+            "body": "Connection State is ",
+            "title": "D. E. W."
         },
         "category": "myCategory"
     },
     
     "WatchKit Simulator Actions": [
         {
-            "title": "First Button",
+            "title": "Ping Phone",
             "identifier": "firstButtonAction"
         }
     ],

@@ -7,18 +7,98 @@
 //
 
 import UIKit
+import WatchConnectivity
+import Foundation
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        if WCSession.isSupported() {  //start isSupported
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            
+            //let connectionState = session.reachable
+            print ("From Phone AppDel reachable \(session.reachable)")
+            
+        }  //end if WCSession.isSupported
+        
+        //creating the inline reply notification action
+        let replyAction = UIMutableUserNotificationAction()
+        replyAction.title = "Say Something"
+        replyAction.identifier = "inline-reply"
+        replyAction.activationMode = .Background
+        replyAction.authenticationRequired = false
+        replyAction.behavior = .TextInput 
+        
+        //creating a category
+        let notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "INVITE_CATEGORY"
+        notificationCategory .setActions([replyAction], forContext: UIUserNotificationActionContext.Default)
+
+        //registerting for the notification.
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes:[ UIUserNotificationType.Sound, UIUserNotificationType.Alert,
+            UIUserNotificationType.Badge], categories: NSSet(array:[notificationCategory]) as? Set<UIUserNotificationCategory>))
+    
         // Override point for customization after application launch.
+        self.beginBackgroundUpdateTask()
+
         return true
     }
+    
+    func beginBackgroundUpdateTask() -> UIBackgroundTaskIdentifier {
+        return UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({})
+    }
+    
+    func endBackgroundUpdateTask(taskID: UIBackgroundTaskIdentifier) {
+        UIApplication.sharedApplication().endBackgroundTask(taskID)
+    }
 
+    
+    func sessionWatchStateDidChange(session: WCSession) {
+        print("sessionWatchStateDidChange")
+        //presentLocalNotificationNow
+        
+        let connectionNotification = UILocalNotification.init()
+        
+        connectionNotification.alertBody = "sessionWatchStateDidChange()\nsession = \(session.reachable)"
+
+        
+/*        if session.reachable == true {
+            connectionNotification.alertBody = "session Watch State Did Change()\nsession = \(session.reachable)"
+        }
+        if session.reachable == false {
+            connectionNotification.alertBody = "session Watch State Did Change()\nsession = \(session.reachable)"
+        } */
+        
+        UIApplication.sharedApplication().presentLocalNotificationNow(connectionNotification)
+        
+    }
+    func sessionReachabilityDidChange(session: WCSession) {
+        /*print("phone reachability change")
+        //interfaceLabel.setText("connected? \(session.reachable)")
+        print ("phone connected to watch? \(session.reachable)")
+        let connectionNotification = UILocalNotification.init()
+        connectionNotification.alertBody = "changed"*/
+        
+        let connectionNotification = UILocalNotification.init()
+        
+        if session.reachable == true {
+            connectionNotification.alertBody = "Connected to watch (session.reachable == \(session.reachable))"        }
+        if session.reachable == false {
+            connectionNotification.alertBody = "Watch disconnected (session.reachable == \(session.reachable))"
+        }
+        UIApplication.sharedApplication().presentLocalNotificationNow(connectionNotification)
+        //print("Sent phone local notification")
+    }
+
+    
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -40,7 +120,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
