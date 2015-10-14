@@ -19,13 +19,14 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var interfaceLabel: WKInterfaceLabel!
     
     func showReachable() {
-        print("sessionState == \(session.reachable)")
+        
+        print("WkX sessionState is\(session.reachable)")
         let sessionState = session.reachable
         if sessionState == true {
-            interfaceLabel.setText("app session is reachable")
+            interfaceLabel.setText("Conntected\nto iPhone")
         }
         else if sessionState == false {
-            interfaceLabel.setText("app session\nNOT\nreachable")
+            interfaceLabel.setText("iPhone\ndisconnected!")
         }
     }
     
@@ -45,20 +46,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func sessionWatchStateDidChange(session: WCSession) {
         print("sessionWatchStateDidChange")
-        //presentLocalNotificationNow
-    }
-    func sessionReachabilityDidChange(session: WCSession) {
         showReachable()
-        /*let sessionState = session.reachable
-        if sessionState == true {
-            //print("session.reachable")
-            interfaceLabel.setText("session reachable")
-        }
-        else if sessionState == false {
-            print("session. not reachable")
-            interfaceLabel.setText("session not reachable")
-        } */
-        
+    }
+    
+    func sessionReachabilityDidChange(session: WCSession) {
+        print("sessionWatchStateDidChange")
+        showReachable()
     }
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user

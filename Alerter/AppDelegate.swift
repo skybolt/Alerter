@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
-            
-            //let connectionState = session.reachable
             print ("From Phone AppDel reachable \(session.reachable)")
             
         }  //end if WCSession.isSupported
@@ -61,31 +59,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     
     func sessionWatchStateDidChange(session: WCSession) {
-        print("sessionWatchStateDidChange")
+        print("p: sessionWatchStateDidChange")
         //presentLocalNotificationNow
         
         let connectionNotification = UILocalNotification.init()
         
-        connectionNotification.alertBody = "sessionWatchStateDidChange()\nsession = \(session.reachable)"
-
-        
-/*        if session.reachable == true {
-            connectionNotification.alertBody = "session Watch State Did Change()\nsession = \(session.reachable)"
-        }
-        if session.reachable == false {
-            connectionNotification.alertBody = "session Watch State Did Change()\nsession = \(session.reachable)"
-        } */
-        
+        connectionNotification.alertBody = "p: sessionWatchStateDidChange()\nsession = \(session.reachable)"
         UIApplication.sharedApplication().presentLocalNotificationNow(connectionNotification)
         
     }
     func sessionReachabilityDidChange(session: WCSession) {
-        /*print("phone reachability change")
-        //interfaceLabel.setText("connected? \(session.reachable)")
-        print ("phone connected to watch? \(session.reachable)")
-        let connectionNotification = UILocalNotification.init()
-        connectionNotification.alertBody = "changed"*/
         
+        print("p: sessionReachabilityDidChange")
         let connectionNotification = UILocalNotification.init()
         
         if session.reachable == true {
@@ -94,7 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             connectionNotification.alertBody = "Watch disconnected (session.reachable == \(session.reachable))"
         }
         UIApplication.sharedApplication().presentLocalNotificationNow(connectionNotification)
-        //print("Sent phone local notification")
     }
 
     
